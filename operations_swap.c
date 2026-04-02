@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   operations_swap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mucelep <mucelep@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: ckurtul <ckurtul@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/30 19:56:54 by mucelep           #+#    #+#             */
-/*   Updated: 2026/03/31 01:44:36 by mucelep          ###   ########.fr       */
+/*   Created: 2026/04/02 00:38:37 by ckurtul           #+#    #+#             */
+/*   Updated: 2026/04/02 02:17:39 by ckurtul          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	s(t_list **stack)
 	t_list	*first;
 	t_list	*second;
 
-	if (!*stack || !(*stack)->next || !stack)
+	if (!*stack || !(*stack)->next)
 		return (0);
 	first = *stack;
 	second = (*stack)->next;
@@ -27,36 +27,31 @@ static int	s(t_list **stack)
 	return (1);
 }
 
-void	sa(t_list **a)
+void	sa(t_stack *stk)
 {
-	if (s(a))
+	if (s(&stk->a))
+	{
 		write(1, "sa\n", 3);
+		stk->count.sa++;
+	}
 }
 
-void	sb(t_list **b)
+void	sb(t_stack *stk)
 {
-	if (s(b))
+	if (s(&stk->b))
+{
 		write(1, "sb\n", 3);
+		stk->count.sb++;
+		stk->count.total++;
+	}
 }
 
-void	ss(t_list **a, t_list **b)
+void	ss(t_stack *stk)
 {
-	int	check;
-
-	check = 0;
-	check += s(a);
-	check += s(b);
-	if (check)
-		write(1, "ss\n", 3);
-}
-
-static int	pa(t_list **a, t_list **b)
-{
-	t_list	*node;
-
-	node = *b;
-	b = (*b)->next;
-	node->next = *a;
-	*a = node;
-	write(1, "pa\n", 3);
+	if ((!stk->a || !stk->a->next) || (!stk->b || !stk->b->next))
+		return ;
+	s(&stk->a);
+	s(&stk->b);
+	write(1, "ss\n", 3);
+	stk->count.ss++;//BURAYI TARTIŞIN BENCE DOĞRU -Ç
 }
