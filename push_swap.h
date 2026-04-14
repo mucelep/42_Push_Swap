@@ -6,7 +6,7 @@
 /*   By: mucelep <mucelep@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 20:37:07 by mucelep           #+#    #+#             */
-/*   Updated: 2026/04/02 19:04:13 by mucelep          ###   ########.fr       */
+/*   Updated: 2026/04/14 04:49:40 by mucelep          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_count
 	int	rra;
 	int	rrb;
 	int	rrr;
-	int total;
+	int	total;
 }	t_count;
 
 typedef struct s_stack
@@ -69,7 +69,15 @@ int		ft_strcmp(const char *s1, const char *s2);
 
 void	init_counts(t_stack *stk);
 void	parse_flag(t_stack *stacks, char *argv, char **split);
+float	disorder(t_list *head);
+void	strategy_selector(t_stack *stacks);
 
+//chunk base
+void	chunk_base(t_stack *stk);
+int		push_chunk(t_stack *stk, int stack_size, int chunk_size);
+void	pull_chunk(t_stack *stk, int stack_size, int chunk_size, int last_chunk);
+int		calculate_stack_size(t_list *stack);
+int		calculate_chunk_size(int stack_size);
 
 void	sa(t_stack *stk);
 void	sb(t_stack *stk);
@@ -82,7 +90,5 @@ void	rr(t_stack *stk);
 void	rra(t_stack *stk);
 void	rrb(t_stack *stk);
 void	rrr(t_stack *stk);
-
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mucelep <mucelep@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 01:54:20 by mucelep           #+#    #+#             */
-/*   Updated: 2026/04/02 19:02:48 by mucelep          ###   ########.fr       */
+/*   Updated: 2026/04/13 22:30:44 by mucelep          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		tmp = tmp->next;
 	tmp->next = new;
 }
+
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
@@ -41,7 +42,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-int	is_valid(char *number)
+int	is_valid(char *number)//geçerli bir sayi mi
 {
 	if (!*number)//"" " " bos string için
 		return (0);
@@ -98,7 +99,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)// split için
 	return (dest);
 }
 
-int		ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;
 
@@ -112,9 +113,9 @@ int		ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-void free_split(char **split)
+void	free_split(char **split)
 {
-	int i;
+	int	i;
 
 	if (!split)
 		return ;
@@ -138,6 +139,7 @@ void	free_list(t_list *lst)
 		lst = tmp;
 	}
 }
+
 t_list	*new_node(int value)
 {
 	t_list	*node;
@@ -150,6 +152,7 @@ t_list	*new_node(int value)
 	node->next = NULL;
 	return (node);
 }
+
 void	error(t_stack *stacks, char **split)
 {
 	if (split)
@@ -166,37 +169,45 @@ void	error(t_stack *stacks, char **split)
 
 int	is_duplicate(t_list *lst)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	while (lst)
 	{
 		tmp = lst->next;
-		while (tmp)
+		while (tmp)//listenin ilk elemanı ile kalan tüm elemanları kaysılastır
 		{
 			if (lst->value == tmp->value)
 				return (1);
 			tmp = tmp->next;
 		}
-		
-		lst = lst->next;
+		lst = lst->next;//listenin 2. elemanına geç
 	}
 	return (0);
 }
 
 void	give_index(t_list *a)
 {
-	int	index;
+	t_list	*current;
+	t_list	*runner;
+	int		index;
 
-	index = 0;
-	while (a)
+	current = a;
+	while (current)
 	{
-		a->index = index;
-		index++;
-		a = a->next;
+		index = 0;
+		runner = a;
+		while (runner)
+		{
+			if (runner->value < current->value)
+				index++;
+			runner = runner->next;
+		}
+		current->index = index;
+		current = current->next;
 	}
 }
 
-int is_order(t_list *a)
+int	is_order(t_list *a)
 {
 	while (a && a->next)
 	{
