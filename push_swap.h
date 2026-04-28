@@ -6,7 +6,7 @@
 /*   By: mucelep <mucelep@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 20:37:07 by mucelep           #+#    #+#             */
-/*   Updated: 2026/04/21 15:45:12 by mucelep          ###   ########.fr       */
+/*   Updated: 2026/04/28 14:54:38 by mucelep          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	putstr_fd(char *str, int fd);
 void	putnbr_fd(int n, int fd);
 void	write_disorder(int integer, int decimal);
 void	write_total(int total);
+void	write_sa(t_stack *a);
+void	write_ra(t_stack *a);
 
 void sa(t_stack *stk);
 void sb(t_stack *stk);

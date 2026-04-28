@@ -6,7 +6,7 @@
 /*   By: mucelep <mucelep@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 15:35:33 by mucelep           #+#    #+#             */
-/*   Updated: 2026/04/21 17:13:14 by mucelep          ###   ########.fr       */
+/*   Updated: 2026/04/28 14:54:51 by mucelep          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	bench_press(t_stack *s, float f)
 	disorder_to_integer(&integer, f, &decimal);
 	write_disorder(integer, decimal);
 	write_total(s->count.total);
+	write_sa(s);
+	write_ra(s);
 	
 }
 
